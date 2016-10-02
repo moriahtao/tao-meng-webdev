@@ -3,9 +3,12 @@ input.form-control {
 }
 
 body {
-    padding-top: 36px;
+    padding-top: 65px;
 }
+.navbar-text {
 
+    margin-right: 15px;
+}
 .navbar-default {
     background-color: #337ab7;
 }
@@ -21,3 +24,58 @@ body {
 .glyphicon{
     z-index: 1000;
 }
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+
+}
+.list-container a:hover {
+    text-decoration: none;
+}
+.list-new-container a:hover{
+    text-decoration: none;
+}
+.list-new-container a {
+    color: #337ab7;
+}
+.list-container a {
+    color: #337ab7;
+}
+span.glyphicon.glyphicon-cog{
+    color: #337ab7;
+}
+
+
+.page-container.navbar-default .navbar-brand {
+    color: #555;
+}
+.page-container.navbar-default .navbar-link {
+    color: #555;
+}
+.page-container a{
+    color: #555;
+}
+
+.page-container.navbar-default{
+    background-color: #ddd;
+}
+
+.page-container-user.navbar-default{
+    background-color: #ddd;
+}
+.page-container-user a{
+    color: #337ab7;
+}
+
+
+span.glyphicon.glyphicon-play{
+    color: #555;
+}
+span.glyphicon.glyphicon-eye-open{
+    color: #555;
+}
+.page-container-user.navbar-default .navbar-link {
+    color: #337ab7;
+}
+

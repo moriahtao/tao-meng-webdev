@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top page-container">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#" class="navbar-link">
+                <a href="page-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -21,7 +22,7 @@
                 New Website
             </a>
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
+                <a href="page-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -38,18 +39,27 @@
     <form>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <input type="text" class="form-control" id="name" placeholder="Page Name">
         </div>
         <div class="form-group">
-            <label for="discription">Discription</label>
-            <textarea class="form-control" rows="3"id="discription" placeholder="Discription"></textarea>
-
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Page Title">
         </div>
 
     </form>
 
 
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom page-container-user">
+    <div class="container">
+        <p class="navbar-text pull-right">
+            <a href="../profile.html">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </p>
+    </div>
+</nav>
 
 </body>
 </html>
