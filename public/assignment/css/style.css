@@ -1,13 +1,19 @@
 input.form-control {
     margin-bottom: 5px;
 }
+.navbar-header {
+    width:100%;
+}
 
 body {
     padding-top: 65px;
 }
-.navbar-text {
-
+.footer-container {
+    width: 100%;
+}
+.navbar-text{
     margin-right: 15px;
+    margin-left:15px;
 }
 .navbar-default {
     background-color: #337ab7;
@@ -79,3 +85,36 @@ span.glyphicon.glyphicon-eye-open{
     color: #337ab7;
 }
 
+
+.icon-group {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    background-color: white;
+
+}
+.icon-group span.glyphicon.glyphicon-align-justify{
+    color: #555;
+}
+.gizmodo-container h1{
+    display: inline-block;
+    margin-top:0px;
+
+}
+.gizmodo-container {
+    position: relative;
+}
+.img-container{
+    position: relative;
+}
+.img-container img{
+    width: 100%;
+}
+.img-container iframe{
+    width: 100%;
+}
+.p-container {
+    padding-bottom: 61px;
+}
