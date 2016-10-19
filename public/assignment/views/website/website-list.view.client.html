@@ -1,5 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid row">
+
         <div class="col-xs-12 col-sm-8">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
@@ -22,42 +23,20 @@
         </div>
 </nav>
 <div class="container list-container">
+
     <div class="col-xs-12 col-sm-8">
          <ul class="list-group">
-             <li class="list-group-item">
-            <a href="#/website/page">
-                Address Book App
+             <li ng-repeat="website in model.websites" class="list-group-item">
+            <a href="#/user/{{model.userId}}/website/{{website._id}}/page">
+                {{website.name}}
             </a>
-            <a href="#/website/:wid" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/website/page">
-                Blogger
-            </a>
-            <a href="#/website/:wid" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/website/page">
-                Blogging App
-            </a>
-            <a href="#/website/:wid" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/website/page">
-                Script Testing App
-            </a>
-            <a href="#/website/:wid" class="pull-right">
+            <a href="#/user/{{model.userId}}/website/{{website._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>
      </ul>
     </div>
+    {{model.websites}}
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
