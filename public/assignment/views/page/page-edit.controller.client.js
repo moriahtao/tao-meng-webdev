@@ -9,6 +9,7 @@
         vm. userId = $routeParams.uid;
         var pageId = $routeParams.pid;
         vm. editPage = editPage;
+        vm.deletePage = deletePage;
 
         function init(){
             vm.pages = PageService.findPagesByWebsiteId(vm. websiteId);
@@ -25,6 +26,11 @@
             else{
                 vm.error("Oops! Cannot update page!")
             }
+        }
+
+        function deletePage(pid){
+            PageService.deletePage(pageId);
+            $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
         }
     }
 })();

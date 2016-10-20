@@ -8,6 +8,7 @@
         var websiteId = $routeParams.wid;
         vm. userId = $routeParams.uid;
         vm. websiteEdit = websiteEdit;
+        vm. websiteDelete = websiteDelete;
 
         function init() {
             vm.website = WebsiteService.findWebsiteById(websiteId);
@@ -17,6 +18,11 @@
 
         function websiteEdit(website){
             WebsiteService.updateWebsite(websiteId, website);
+            $location.url("/user/" + vm.userId+"/website");
+        }
+
+        function websiteDelete(websiteId){
+            WebsiteService.deleteWebsite(websiteId);
             $location.url("/user/" + vm.userId+"/website");
         }
     }

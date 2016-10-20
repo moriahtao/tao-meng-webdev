@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-</head>
-<body>
+
+
 
 <nav class="navbar navbar-default navbar-fixed-top page-container">
     <div class="container-fluid ">
@@ -28,7 +20,7 @@
 <div class="container list-container">
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="widget-header.view.client.html">
+            <a ng-click="model.createCorrespondingWidget(model.pageId,'HEADER')">
                 Header
             </a>
         </li>
@@ -60,12 +52,12 @@
             </a>
         </li>
         <li class="list-group-item">
-            <a href="widget-edit.view.client.html">
+            <a ng-click="model.createCorrespondingWidget(model.pageId, 'IMAGE')">
                 Image
             </a>
         </li>
         <li class="list-group-item">
-            <a href="widget-youtube.view.client.html">
+            <a ng-click="model.createCorrespondingWidget(model.pageId, 'YOUTUBE')">
                 Youtube
             </a>
         </li>
@@ -92,8 +84,3 @@
     </div>
     </div>
 </nav>
-
-
-
-</body>
-</html>

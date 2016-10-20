@@ -16,7 +16,8 @@
             findPagesByWebsiteId: findPagesByWebsiteId,
             findPageById: findPageById,
             createPage: createPage,
-            updatePage: updatePage
+            updatePage: updatePage,
+            deletePage: deletePage
 
         };
         return api;
@@ -64,6 +65,16 @@
                 }
             }
           return null
+        }
+
+        function deletePage(pageId){
+            for(var u in pages){
+                if(pages[u]._id === pageId){
+                  pages.splice(u, 1);
+                    return true;
+                }
+            }
+            return null
         }
     }
 })();
