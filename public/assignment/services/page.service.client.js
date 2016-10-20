@@ -18,13 +18,21 @@
         };
         return api;
 
-        function findPagesByWebsiteId(){
+        function findPagesByWebsiteId(websiteId){
+            var result = [];
+            for(var u in pages){
+                var page = pages[u];
+                if (page.websiteId === websiteId){
+                    result.push(pages[u]);
+                }
+            }
+            return result;
 
         }
 
         function findPageById(id){
             for(var u in pages){
-                page = pages[u];
+                var page = pages[u];
                 if(page._id === id){
                     return page;
                 }

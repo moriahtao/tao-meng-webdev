@@ -14,7 +14,11 @@
 
         var api={
             findUserByCredentials: findUserByCredentials,
-            findUserById: findUserById
+            findUserById: findUserById,
+            createUser: createUser,
+            findUserByUsername: findUserByUsername,
+            updateUser: updateUser
+
         };
         return api;
 
@@ -36,6 +40,52 @@
                 }
             }
             return null;
+        }
+        function createUser(user){
+            if(findUserByUsername(user.username)){
+                return null;
+            }
+            else{
+                var newUser = {
+                    _id: (new Date()).getTime()+"",
+                    username: user.username,
+                    password: user.password,
+                    firstName: "",
+                    lastName: ""
+                };
+
+                users.push(newUser);
+                return newUser;
+            }
+        }
+        function findUserByUsername(username){
+            for (var u in users) {
+                user = users[u];
+                if (user.username === username) {
+                    return user;
+                }
+            }
+            return null;
+        }
+
+        function updateUser(userId, user){
+            for (var u in users) {
+                if ( users[u]._id === userId) {
+                    users[u].firstName = user.firstName;
+                    users[u].lastName = user.lastName;
+                    return true;
+                }
+            }
+            return false;
+        }
+        function deleteUser(userId){
+            for (var u in users) {
+                if ( users[u]._id === userId) {
+                   users.splice(u, 1);
+                    return users
+                }
+            }
+            return users
         }
     }
 })();

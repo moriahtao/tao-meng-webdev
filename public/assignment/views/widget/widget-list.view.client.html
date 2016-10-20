@@ -1,0 +1,83 @@
+
+
+<nav class="navbar navbar-default navbar-fixed-top page-container">
+    <div class="container-fluid ">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="../views/page/page-list.view.client.html" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Widgets
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
+          <span class="glyphicon glyphicon-plus">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container ">
+
+<div ng-switch="widget.widgetType"
+     ng-repeat="widget in model.widgets" class="gizmodo-container">
+    <!--{{widget}}-->
+    <div ng-switch="widget.size"ng-switch-when="HEADER">
+
+        <h1 ng-switch-when="1">{{widget.text}}</h1>
+        <h2 ng-switch-when="2">{{widget.text}}</h2>
+        <h3 ng-switch-when="3">{{widget.text}}</h3>
+        <h4 ng-switch-when="4">{{widget.text}}</h4>
+    </div>
+    <div ng-switch-when="YOUTUBE">
+        <iframe width="560" height="315" ng-src="{{model.checkSafeYoutubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <!--ng-src="model.checkSafeYoutubeUrl(widget.url)
+        ng-src does not treat it as a real url-->
+    <div ng-switch-when="IMAGE">
+        image
+    </div>
+    <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
+    </div>
+    <div class="icon-group">
+        <a class=""href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <a class=""href="widget-list.view.client.html">
+            <span class="glyphicon glyphicon-align-justify"></span>
+        </a>
+    </div>
+</div>
+</div>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom page-container-user">
+    <p class="container">
+        <p class="row navbar-text">
+        <p class="navbar-text pull-left">
+            <a href="../views/user/profile.view.client.html">
+                <span class="glyphicon glyphicon-play"></span>
+            </a>
+        </p>
+        <p class="navbar-text pull-left">
+            <a href="../views/user/profile.view.client.html">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </p>
+        <p class="navbar-text pull-right">
+            <a href="../views/user/profile.view.client.html">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+        </p>
+        </p>
+    </p>
+</nav>
+
+

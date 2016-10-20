@@ -24,44 +24,11 @@
 
 <div class="container list-container">
     <ul class="list-group">
-        <li class="list-group-item">
+        <li ng-repeat="page in model.pages" class="list-group-item">
             <a href="#/website/page/widget">
-                Blog Post
+                {{page.name}}
             </a>
-            <a href="#/website/page/edit" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/website/page/widget">
-                Blogs
-            </a>
-            <a href="#/website/page/edit" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/website/page/widget">
-                Home
-            </a>
-            <a href="#/website/page/edit" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-        <li class="list-group-item">
-            <a href="#/website/page/widget">
-                About
-            </a>
-            <a href="#/website/page/edit" class="pull-right">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-
-        <li class="list-group-item">
-            <a href="#/website/page/widget">
-                Contact Us
-            </a>
-            <a href="#/website/page/edit" class="pull-right">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>
