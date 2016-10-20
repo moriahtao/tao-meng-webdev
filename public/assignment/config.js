@@ -45,13 +45,16 @@
                 controller:"PageListController",
                 controllerAs:"model"
             })
+
+            .when("/user/:uid/website/:wid/page/new", {
+                templateUrl: "views/page/page-new.view.client.html",
+                controller: "PageNewController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/website/:wid/page/:pid", {
                 templateUrl: "views/page/page-edit.view.client.html",
-                controller:"PageEditController",
-                controllerAs:"model"
-            })
-            .when("/website/page/new", {
-                templateUrl: "views/page/page-new.view.client.html"
+                controller: "PageEditController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",

@@ -14,7 +14,10 @@
 
         var api={
             findPagesByWebsiteId: findPagesByWebsiteId,
-            findPageById: findPageById
+            findPageById: findPageById,
+            createPage: createPage,
+            updatePage: updatePage
+
         };
         return api;
 
@@ -38,6 +41,29 @@
                 }
             }
             return null;
+        }
+
+        function createPage(websiteId, page){
+           {var newPage = {
+                _id: (new Date()).getTime() + "",
+                name: page.name,
+                websiteId: websiteId,
+                description: page.description
+            };
+
+                pages.push(newPage);
+                return newPage;}
+        }
+
+        function updatePage(pageId, page){
+            for(var u in pages){
+                if(pages[u]._id === pageId){
+                    pages[u].name = page.name;
+                    pages[u].description = page.description;
+                    return true;
+                }
+            }
+          return null
         }
     }
 })();

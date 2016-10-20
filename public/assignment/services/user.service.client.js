@@ -82,10 +82,10 @@
             for (var u in users) {
                 if ( users[u]._id === userId) {
                    users.splice(u, 1);
-                    return users
+                    return true
                 }
             }
-            return users
+            return null
         }
     }
 })();

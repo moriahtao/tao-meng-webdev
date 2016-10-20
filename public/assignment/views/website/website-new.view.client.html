@@ -5,7 +5,7 @@
         <div class="col-xs-4 hidden-xs">
             <div class="navbar-header">
                 <p class="navbar-text pull-left">
-                    <a href="#/profile" class="navbar-link">
+                    <a href="#/user/{{model.userId}}" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                     </a>
@@ -14,7 +14,7 @@
                     Websites
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#/website/new" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
           <span class="glyphicon glyphicon-plus">
           </span>
                     </a>
@@ -24,7 +24,7 @@
         <div class="col-xs-12 col-sm-8">
             <div class="navbar-header">
                 <p class="navbar-text pull-left">
-                    <a href="#/website" class="navbar-link">
+                    <a href="#/user/{{model.userId}}/website" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                     </a>
@@ -33,7 +33,7 @@
                     New Website
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#/website" class="navbar-link">
+                    <a ng-click="model.newWebsite(model.website)" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                     </a>
@@ -97,14 +97,16 @@
     </div>
 
     <div class="col-xs-12 col-sm-8">
-    <form>
+        <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+
+        <form>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <input ng-model="model.website.name"type="text" class="form-control" id="name" placeholder="Name">
         </div>
         <div class="form-group">
             <label for="discription">Discription</label>
-            <textarea class="form-control" rows="3"id="discription" placeholder="Discription"></textarea>
+            <textarea ng-model="model.website.description"class="form-control" rows="3"id="discription" placeholder="Discription"></textarea>
 
         </div>
 
@@ -119,7 +121,7 @@
 
 
         <p class="navbar-text pull-right">
-            <a href="#/profile">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
