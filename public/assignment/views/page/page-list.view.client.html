@@ -25,7 +25,7 @@
 <div class="container list-container">
     <ul class="list-group">
         <li ng-repeat="page in model.pages" class="list-group-item">
-            <a href="#/website/page/widget">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                 {{page.name}}
             </a>
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
@@ -38,7 +38,7 @@
     <div class="container">
         <p class="row navbar-text">
         <p class="navbar-text pull-right">
-            <a href="#/profile">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>

@@ -4,7 +4,7 @@
     <div class="container-fluid ">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="../views/page/page-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -40,7 +40,7 @@
     <!--ng-src="model.checkSafeYoutubeUrl(widget.url)
         ng-src does not treat it as a real url-->
     <div ng-switch-when="IMAGE">
-        image
+        <img width="{{widget.width}}" ng-src={{widget.url}}>
     </div>
     <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
     </div>
@@ -72,7 +72,7 @@
             </a>
         </p>
         <p class="navbar-text pull-right">
-            <a href="../views/user/profile.view.client.html">
+            <a href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>

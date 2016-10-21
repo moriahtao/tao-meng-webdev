@@ -28,19 +28,19 @@
     <form>
         <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="">
+        <input type="text" class="form-control" id="name" placeholder="name">
 </div>
 <div class="form-group">
     <label for="text">Text</label>
-    <input class="form-control"id="text" value="">
+    <input class="form-control"id="text" placeholder="text">
 </div>
 <div class="form-group">
     <label for="URL">URL</label>
-    <input type="text" class="form-control" id="URL" value="https://www.youtube.com/watch?v=hNBlfyYHu80">
+    <input ng-model="model.widget.url"type="text" class="form-control" id="URL" placeholder="url">
 </div>
 <div class="form-group">
     <label for="width">Width</label>
-    <input type="text" class="form-control" id="width" value="">
+    <input ng-model="model.widget.width"type="text" class="form-control" id="width" placeholder="width">
 </div>
 
     </form>
@@ -51,7 +51,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom page-container-user">
     <div class="container">
         <p class="navbar-text pull-right">
-            <a href="../views/user/profile.view.client.html" class="navbar-link">
+            <a href="#/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>

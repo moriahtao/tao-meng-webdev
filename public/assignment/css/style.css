@@ -5,9 +5,7 @@ input.form-control {
     width:100%;
 }
 
-body {
-    padding-top: 65px;
-}
+
 .footer-container {
     width: 100%;
 }
@@ -117,4 +115,9 @@ span.glyphicon.glyphicon-eye-open{
 }
 .p-container {
     padding-bottom: 81px;
+}
+
+body {
+    padding-top: 65px;
+    padding-bottom: 75px;
 }
