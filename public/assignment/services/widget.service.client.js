@@ -24,7 +24,8 @@
             findWidgetsByPageId: findWidgetsByPageId,
             findWidgetById: findWidgetById,
             createWidget: createWidget,
-            updateWidget: updateWidget
+            updateWidget: updateWidget,
+            deleteWidget: deleteWidget
         };
         return api;
         /*!!!remember*/
@@ -82,6 +83,15 @@
             }
             return null
 
+        }
+        function deleteWidget(widgetId){
+            for (var w in widgets) {
+                if (widgets[w]._id === widgetId) {
+                    websites.splice(w,1);
+                    return true;
+                }
+            }
+            return null;
         }
 
     }
