@@ -3,20 +3,13 @@
         .module("WebAppMaker")
         .factory("WebsiteService", WebsiteService);
 
-    function WebsiteService() {
-        var websites = [
-            {"_id": "123", "name": "Facebook", "developerId": "456", "description": "Lorem"},
-            {"_id": "234", "name": "Tweeter", "developerId": "456", "description": "Lorem"},
-            {"_id": "456", "name": "Gizmodo", "developerId": "456", "description": "Lorem"},
-            {"_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem"},
-            {"_id": "678", "name": "Checkers", "developerId": "123", "description": "Lorem"},
-            {"_id": "789", "name": "Chess", "developerId": "234", "description": "Lorem"}
-        ];
+    function WebsiteService($http) {
+
 
 
         var api = {
             createWebsite: createWebsite,
-            findWebsitesByUser: findWebsitesByUser,
+            findAllWebsitesForUser: findAllWebsitesForUser,
             findWebsiteById: findWebsiteById,
             updateWebsite:updateWebsite,
             deleteWebsite: deleteWebsite
@@ -25,50 +18,26 @@
 
 
         function createWebsite(userId, website) {
-            if(website.name === null){
-                return null
-            }
-            else{var newWebsite = {
-                _id: (new Date()).getTime() + "",
-                name: website.name,
-                developerId: userId,
-                description: website.description
-            };
-
-            websites.push(newWebsite);
-            return newWebsite;}
+            var url = "/api/user/" + userId + "/website";
+            return $http.post(url, website);
 
         }
 
-        function findWebsitesByUser(userId) {
+        function findAllWebsitesForUser(userId) {
             var url = "/api/user/" + userId + "/website";
-            $http.get(url);
-            /*var result = [];
-            for (var w in websites) {
-                if (websites[w].developerId === userId) {
-                    result.push(websites[w]);
-                }
-            }
-            return result;*/
+            return $http.get(url);
         }
 
         function findWebsiteById(websiteId) {
-            for (var w in websites) {
-                var website = websites[w];
-                if (websites[w]._id === websiteId) {
-                    return website;
-                }
-            }
-            return null;
+            var url =  "/api/website/"+ websiteId;
+            return $http.get(url);
+
         }
 
         function updateWebsite(websiteId, website){
-            for (var w in websites) {
-                if (websites[w]._id === websiteId) {
-                    websites[w].name = website.name;
-                    websites[w].description = website.description;
-                }
-            }
+            var url =  "/api/website/"+ websiteId;
+            return $http.put(url, website);
+
         }
 
        function deleteWebsite(websiteId){

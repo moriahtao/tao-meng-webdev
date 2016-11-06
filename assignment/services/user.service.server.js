@@ -12,7 +12,8 @@ module.exports = function(app) {
     app.put('/api/user/:uid', updateUser);
     app.delete('/api/user/:uid', deleteUser);
 
-    function deleteUser(req,res){
+    function updateUser(req,res){
+        var user = req.body;
         var uid = req.params.uid;
         for(var u in users){
             if(users[u]._id === uid){
@@ -21,8 +22,7 @@ module.exports = function(app) {
         }
         res.send(200);
     }
-    function updateUser(req,res){
-        var user = req.body;
+    function deleteUser(req,res){
         var uid = req.params.uid;
         for(var u in users){
             if(users[u]._id === uid){

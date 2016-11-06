@@ -10,7 +10,14 @@
 
 
         function init(){
-            vm.websites=WebsiteService.findWebsitesByUser(vm.userId);
+            var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
+            promise
+                .success(function (websites) {
+                        vm.websites = websites;
+                })
+                .error(function (error){
+
+                })
         }
         init();
     }

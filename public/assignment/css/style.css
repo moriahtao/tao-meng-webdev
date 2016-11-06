@@ -89,7 +89,7 @@ span.glyphicon.glyphicon-eye-open{
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 10;
+    z-index: 1000;
     background-color: white;
 
 }

@@ -24,14 +24,14 @@
 
         init();
         function deleteUser() {
-            UserService.deleteUser(vm.userId)
-                .success(function (user) {
+            UserService.deleteUser(userId);
+                /*.success(function (user) {
                     $location.url("/login");
 
                 })
                 .error(function () {
 
-                })
+                })*/
 
         }
 

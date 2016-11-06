@@ -16,6 +16,7 @@
         function init(){
             vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
 
+
         }
         init();/*remember to execute init()!!!*/
 
