@@ -6,7 +6,8 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateProfile(model.user)" class="navbar-link">
+                <a ng-click="model.updateUser()" class="navbar-link">
+                    <!--because of the double binding we dont neet to pass anything to updateProfile-->
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -41,6 +42,8 @@
            href="#/user/{{model.user._id}}/website">Websites</a>
         <a class="btn btn-danger  btn-block"
            href="#/login">Logout</a>
+        <a class="btn btn-warning  btn-block" ng-click="model.deleteUser()">
+           <!--href="#/login"--> Unregister</a>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

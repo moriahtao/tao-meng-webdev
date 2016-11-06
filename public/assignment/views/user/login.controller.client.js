@@ -9,12 +9,21 @@
 
         function login(name, psd) {
 
-            var user = UserService.findUserByCredentials(name,psd);
-            if (user === null)
-                vm.error = "No such user";
-            else{
-                $location.url("/user/" + user._id);
-            }
+            var promise = UserService.findUserByCredentials(name,psd);
+            promise
+                .success(function(user){
+                    if (user === '0') {
+                        vm.error = "No such user";
+                    }
+                    else{
+                        $location.url("/user/" + user._id);
+                    }
+                })
+                .error(function(bbb){
+console.log(bbb);
+                })
+
+
         }
     }
 })();

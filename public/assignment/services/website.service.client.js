@@ -41,13 +41,15 @@
         }
 
         function findWebsitesByUser(userId) {
-            var result = [];
+            var url = "/api/user/" + userId + "/website";
+            $http.get(url);
+            /*var result = [];
             for (var w in websites) {
                 if (websites[w].developerId === userId) {
                     result.push(websites[w]);
                 }
             }
-            return result;
+            return result;*/
         }
 
         function findWebsiteById(websiteId) {
