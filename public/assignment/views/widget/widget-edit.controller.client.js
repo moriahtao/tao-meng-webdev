@@ -14,19 +14,45 @@
 
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            var promise = WidgetService.findWidgetById(vm.widgetId);
+            promise
+                .success(function (widget) {
+                    vm.widget = widget;
+                    //alert(vm.widget.widgetType);
+                })
+                .error(function (error) {
+
+                });
+           // vm.widget = WidgetService.findWidgetById(vm.widgetId);
         }
 
         init();
 
-        function deleteWidget(widgetId) {
-            WidgetService.deleteWidget(widgetId);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+        function deleteWidget() {
+            var promise =  WidgetService.deleteWidget(vm.widgetId);
+            promise
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                })
+                .error(function (error) {
+
+                });
+
+
         }
 
         function updateWidget(widget) {
-            WidgetService.updateWidget(vm.widgetId, widget);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+            var promise =  WidgetService.updateWidget(vm.widgetId, widget);
+            promise
+                .success(function () {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                })
+                .error(function (error) {
+
+                });
+
+           // WidgetService.updateWidget(vm.widgetId, widget);
+            //$location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
         }
     }
 })();

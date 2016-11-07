@@ -19,7 +19,8 @@
             },
             {"_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
         ];
-
+       /* var multer = require('multer'); // npm install multer --save
+        var upload = multer({ dest: __dirname+'/../../public/uploads' });*/
         var api = {
             findWidgetsByPageId: findWidgetsByPageId,
             findWidgetById: findWidgetById,
@@ -29,7 +30,30 @@
         };
         return api;
         /*!!!remember*/
+       /* function uploadImage(req, res) {
 
+            var widgetId      = req.body.widgetId;
+            var userId      = req.body.userId;
+            var websiteId      = req.body.websiteId;
+            var pageId      = req.body.pageId;
+            var width         = req.body.width;
+            var myFile        = req.file;
+
+            var originalname  = myFile.originalname; // file name on user's computer
+            var filename      = myFile.filename;     // new file name in uploads folder
+            var path          = myFile.path;         // full path of uploaded file
+            var destination   = myFile.destination;  // folder where file is saved to
+            var size          = myFile.size;
+            var mimetype      = myFile.mimetype;
+
+            for(var i in widgets){
+                if(widgets[i]._id === widgetId){
+                    widgets[i].url = "/uploads/"+ filename;
+                }
+            }
+
+            res.redirect("/assignment/#/user/"+ userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
+        }*/
         function findWidgetsByPageId(pageId) {
             var url = "/api/page/" + pageId + "/widget";
             return $http.get(url);
@@ -48,42 +72,12 @@
         }
 
         function updateWidget(widgetId, widget) {
-            for (var w in widgets) {
-                if (widgets[w]._id === widgetId) {
-                    switch (widget.widgetType){
-                        case"HEADER":
-                            widgets[w].name = widget.name;
-                            widgets[w].text = widget.text;
-                            widgets[w].size = widget.size;
-                            return true;
-                        case"YOUTUBE":
-                            widgets[w].name = widget.name;
-                            widgets[w].text = widget.text;
-                            widgets[w].url = widget.url;
-                            widgets[w].width = widget.width;
-                            return true;
-                        case"IMAGE":
-                            widgets[w].name = widget.name;
-                            widgets[w].text = widget.text;
-                            widgets[w].url = widget.url;
-                            widgets[w].width = widget.width;
-                            return true;
-
-
-                    }
-                }
-            }
-            return null
-
+            var url = "/api/widget/" + widgetId;
+            return $http.put(url, widget);
         }
         function deleteWidget(widgetId){
-            for (var w in widgets) {
-                if (widgets[w]._id === widgetId) {
-                    websites.splice(w,1);
-                    return true;
-                }
-            }
-            return null;
+            var url =  "/api/widget/"+ widgetId;
+            return $http.delete(url);
         }
 
     }

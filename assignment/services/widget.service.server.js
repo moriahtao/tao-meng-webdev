@@ -19,6 +19,8 @@ module.exports = function (app) {
     app.get('/api/page/:pid/widget', findAllWidgetsForPage);
     app.get('/api/widget/:widgetId',findWidgetById );
     app.post('/api/page/:pid/widget', createWidget);
+    app.delete('/api/widget/:widgetId', deleteWidget);
+    app.put('/api/widget/:widgetId', updateWidget);
 
     function findAllWidgetsForPage(req, res) {
         var pid = req.params.pid;
@@ -48,7 +50,47 @@ module.exports = function (app) {
         res.send(200);
     }
 
-
+    function deleteWidget(req,res){
+        var widgetId = req.params.widgetId;
+        for (var w in widgets) {
+            if (widgets[w]._id === widgetId) {
+                widgets.splice(w,1);
+                res.send(200);
+                return
+            }
+        }
+        res.send('0');
+    }
+    function updateWidget(req, res) {
+        var widget = req.body;
+        var widgetId = req.params.widgetId;
+        for (var w in widgets) {
+            if (widgets[w]._id === widgetId) {
+                switch (widget.widgetType) {
+                    case"HEADER":
+                        widgets[w].name = widget.name;
+                        widgets[w].text = widget.text;
+                        widgets[w].size = widget.size;
+                        res.send(200);
+                        return;
+                    case"YOUTUBE":
+                        widgets[w].name = widget.name;
+                        widgets[w].text = widget.text;
+                        widgets[w].url = widget.url;
+                        widgets[w].width = widget.width;
+                        res.send(200);
+                        return;
+                    case"IMAGE":
+                        widgets[w].name = widget.name;
+                        widgets[w].text = widget.text;
+                        widgets[w].url = widget.url;
+                        widgets[w].width = widget.width;
+                        res.send(200);
+                        return;
+                }
+            }
+        }
+    }
     /*  function createWebsite(req, res) {
           var newWebsite = req.body;
           websites.push(newWebsite);
@@ -58,9 +100,7 @@ module.exports = function (app) {
 
 
 
-      function updateWebsite(req, res) {
-          var website = req.body;
-          var wid = req.params.wid;
+
           for (var w in websites) {
               if (websites[w]._id === wid) {
                   websites[w].name = website.name;
@@ -72,16 +112,7 @@ module.exports = function (app) {
           res.send('0');
       }
 
-      function deleteWebsite(req,res){
-          var wid = req.params.wid;
-          for (var w in websites) {
-              if (websites[w]._id === wid) {
-                  websites.splice(w,1);
-                  res.send(200);
-                  return
-              }
-          }
-          res.send('0');
+
       }*/
 
 
