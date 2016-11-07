@@ -10,8 +10,16 @@
         vm.newPage = newPage;
 
         function newPage(page){
-            PageService.createPage(vm.websiteId, page);
-            $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
+            page._id = (new Date()).getTime() + "";
+            page.websiteId = vm.websiteId;
+            var promise =  PageService.createPage(vm.websiteId, page);
+            promise
+                .success(function () {
+                    $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
+                })
+                .error(function (error){
+
+                });
 
         }
 

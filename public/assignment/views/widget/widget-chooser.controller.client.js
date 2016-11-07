@@ -12,7 +12,15 @@
         vm.createCorrespondingWidget = createCorrespondingWidget;
 
         function init() {
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            var promise = WidgetService.findWidgetById(vm.widgetId);
+            promise
+                .success(function (widget) {
+                    vm.widget = widget;
+                })
+                .error(function (error) {
+
+                });
+            //vm.widget = WidgetService.findWidgetById(vm.widgetId);
         }
 
         init();
@@ -23,8 +31,16 @@
                 widgetType: type+"",
                 pageId: pageId
             };
-            WidgetService.createWidget(pageId, newWidget);
-            $location.url("user/"+ vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+           var promise =   WidgetService.createWidget(pageId, newWidget);
+            promise
+                .success(function () {
+                    $location.url("user/"+ vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                })
+                .error(function (error){
+
+                });
+            //WidgetService.createWidget(pageId, newWidget);
+            //$location.url("user/"+ vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
         }
     }
 })();

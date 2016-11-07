@@ -14,9 +14,15 @@
         vm.checkSafeYoutubeUrl = checkSafeYoutubeUrl;
 
         function init(){
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+            var promise = WidgetService.findWidgetsByPageId(vm.pageId);
+            promise
+                .success(function (widgets) {
+                    vm.widgets = widgets;
+                })
+                .error(function (error){
 
-
+                });
+            //vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();/*remember to execute init()!!!*/
 
@@ -28,7 +34,6 @@
             var id = parts[parts.length-1];
 
             url = "https://www.youtube.com/embed/" + id;
-            console.log(url);
             return $sce.trustAsResourceUrl(url);
         }
 

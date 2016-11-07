@@ -42,8 +42,14 @@
         }
 
         function websiteDelete(websiteId){
-            WebsiteService.deleteWebsite(websiteId);
-            $location.url("/user/" + vm.userId+"/website");
+            var promise = WebsiteService.deleteWebsite(websiteId);
+            promise
+                .success(function(){
+                    $location.url("/user/" + vm.userId+"/website");
+                })
+                .error(function(){
+
+                })
         }
     }
 })();

@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("WidgetService", WidgetService);
 
-    function WidgetService() {
+    function WidgetService($http) {
         var widgets = [
             {"_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
             {"_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -31,28 +31,20 @@
         /*!!!remember*/
 
         function findWidgetsByPageId(pageId) {
-            var result = [];
-            for (var u in widgets) {
-                var widget = widgets[u];
-                if (widget.pageId === pageId) {
-                    result.push(widget);
-                }
-            }
-            return result;
+            var url = "/api/page/" + pageId + "/widget";
+            return $http.get(url);
         }
 
         function findWidgetById(widgetId) {
-            for (var u in widgets) {
-                if (widgets[u]._id === widgetId) {
-                    return widgets[u];
-                }
-            }
-            return null
+            var url =  "/api/widget/" + widgetId;
+            return $http.get(url);
         }
 
         function createWidget(pageId, widget) {
-            widgets.push(widget);
-            return widgets;
+            var url = "/api/page/" + pageId + "/widget";
+            return $http.post(url, widget);
+            //widgets.push(widget);
+            //return widgets;
         }
 
         function updateWidget(widgetId, widget) {

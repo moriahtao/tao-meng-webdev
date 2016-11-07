@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.post('/api/user/:uid/website', createWebsite);
     app.get('/api/website/:wid', findWebsiteById);
     app.put('/api/website/:wid', updateWebsite);
+    app.delete('/api/website/:wid',deleteWebsite);
 
     function findAllWebsitesForUser(req, res) {
         var uid = req.params.uid;
@@ -38,6 +39,7 @@ module.exports = function (app) {
             var website = websites[w];
             if (websites[w]._id === websiteId) {
                 res.send(website);
+                return;
             }
         }
         res.send('0');
@@ -52,46 +54,23 @@ module.exports = function (app) {
                 websites[w].description = website.description;
             }
             res.send(websites[w]);
+            return;
         }
         res.send('0');
     }
 
-    /*function deleteUser(req,res){
-     var uid = req.params.uid;
-     for(var u in users){
-     if(users[u]._id === uid){
-     users[u] = user;
-     }
-     }
-     res.send(200);
-     }
-     function updateUser(req,res){
-     var user = req.body;
-     var uid = req.params.uid;
-     for(var u in users){
-     if(users[u]._id === uid){
-     users.splice(u, 1);
-     }
-     }
-     res.send(200);
+    function deleteWebsite(req,res){
+     var wid = req.params.wid;
+        for (var w in websites) {
+            if (websites[w]._id === wid) {
+                websites.splice(w,1);
+                res.send(200);
+                return
+            }
+        }
+        res.send('0');
      }
 
-     function createUser(req, res){
-     var newUser = req.body;
-     newUser._id = (new Date()).getTime()+"";
-     users.push(newUser);
-     res.send(newUser);
-
-     }
-     function findUserById(req, res){
-     var userId = req.params.uid;
-     for ( var u in users){
-     if(users[u]._id === userId){
-     res.send(users[u]);
-     }
-     }
-     res.send('0');
-     }*/
 
 
 };

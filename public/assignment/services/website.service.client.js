@@ -41,13 +41,8 @@
         }
 
        function deleteWebsite(websiteId){
-           for (var w in websites) {
-               if (websites[w]._id === websiteId) {
-                   websites.splice(w,1);
-                   return true
-               }
-           }
-           return null
+           var url =  "/api/website/"+ websiteId;
+           return $http.delete(url);
        }
     }
 })();

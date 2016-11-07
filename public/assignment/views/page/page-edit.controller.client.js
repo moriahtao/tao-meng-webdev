@@ -12,25 +12,47 @@
         vm.deletePage = deletePage;
 
         function init(){
-            vm.pages = PageService.findPagesByWebsiteId(vm. websiteId);
-            vm.page = PageService.findPageById(pageId);
+            var promise = PageService.findAllPagesForWebsite(vm.websiteId);
+            promise
+                .success(function (pages) {
+                    vm.pages = pages;
+                })
+                .error(function (error){
+
+                });
+
+            var promise2 = PageService.findPageById(pageId);
+            promise2
+                .success(function (page) {
+                    vm.page = page;
+                })
+                .error(function (error){
+
+                });
         }
         init();
 
 
         function editPage(page){
-            var success = PageService.updatePage(pageId, page);
-            if(success){
-                $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
-            }
-            else{
-                vm.error("Oops! Cannot update page!")
-            }
+            var promise = PageService.updatePage(pageId, vm.page);
+            promise
+                .success(function(){
+                    $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
+                })
+                .error(function(){
+
+                });
         }
 
         function deletePage(pid){
-            PageService.deletePage(pageId);
-            $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
+            var promise = PageService.deletePage(pid);
+            promise
+                .success(function(){
+                    $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
+                })
+                .error(function(){
+
+                });
         }
     }
 })();
