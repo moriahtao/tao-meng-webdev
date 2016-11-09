@@ -21,7 +21,7 @@
         </div>
     </form>
     <strong>File Upload</strong>
-    <form action="/api/upload"  method="post" enctype="multipart/form-data">
+    <form action="/api/upload"  method="post" enctype="multipart/form-data"><!--generate a post to the entire url-->
         <input  name="myFile"   type="file" class="form-control"/>
         <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
         <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
@@ -34,7 +34,7 @@
             <label for="exampleInputFile">File input</label>
             <input type="file" id="exampleInputFile">
         </div>-->
-    </form>
+
     <!--<a class="btn btn-primary  btn-block"
        href="widget-list.view.client.html">Upload Image</a>-->
     <a class="btn btn-danger  btn-block"
