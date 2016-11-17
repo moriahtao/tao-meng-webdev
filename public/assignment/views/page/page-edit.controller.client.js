@@ -7,7 +7,7 @@
         var vm = this;
         vm. websiteId = $routeParams.wid;
         vm. userId = $routeParams.uid;
-        var pageId = $routeParams.pid;
+        vm. pageId = $routeParams.pid;
         vm. editPage = editPage;
         vm.deletePage = deletePage;
 
@@ -21,7 +21,7 @@
 
                 });
 
-            var promise2 = PageService.findPageById(pageId);
+            var promise2 = PageService.findPageById(vm.pageId);
             promise2
                 .success(function (page) {
                     vm.page = page;
@@ -34,7 +34,7 @@
 
 
         function editPage(page){
-            var promise = PageService.updatePage(pageId, vm.page);
+            var promise = PageService.updatePage(vm.pageId, vm.page);
             promise
                 .success(function(){
                     $location.url("/user/" + vm.userId+"/website/" + vm.websiteId + "/page");
