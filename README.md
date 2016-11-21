@@ -1,7 +1,7 @@
 # web-dev-template
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
+1. git clone https://https://github.com/moriahtao/tao-meng-webdev.git
+1. cd tao-meng-webdev
 1. npm install
 1. mongod
 1. node server.js
