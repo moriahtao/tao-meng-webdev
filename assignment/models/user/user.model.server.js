@@ -11,7 +11,9 @@ module.exports = function(){
     var api={
         createUser: createUser,
         findUserById: findUserById,
-        updateUser: updateUser
+        updateUser: updateUser,
+        findUserByCredentials: findUserByCredentials,
+        deleteUser: deleteUser
     };
     return api;
 
@@ -33,6 +35,18 @@ module.exports = function(){
                     lastName: user.lastName
                 }
             );
+    }
+    function findUserByCredentials(name, psd){
+        return UserModel.find({//also if sure there is only one result, can write as findOne({})
+            username: name,
+            password: psd
+        });
+
+    }
+    function deleteUser(uid){
+        return UserModel.remove({
+            _id: uid
+        });
     }
 
 

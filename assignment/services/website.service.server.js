@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function (app, model) {
 
     var websites = [
         {"_id": "123", "name": "Facebook", "developerId": "456", "description": "Lorem"},
@@ -28,8 +28,20 @@ module.exports = function (app) {
 
     function createWebsite(req, res) {
         var newWebsite = req.body;
-        websites.push(newWebsite);
-        res.send(websites);
+
+        model
+            .websiteModel
+            .createWebsite(newWebsite)
+            .then(
+                function(newWebsite){
+                    res.send(newWebsite);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
+       /* websites.push(newWebsite);
+        res.send(websites);*/
     }
 
 

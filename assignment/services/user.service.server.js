@@ -34,12 +34,24 @@ module.exports = function(app, model) {
     }
     function deleteUser(req,res){
         var uid = req.params.uid;
-        for(var u in users){
+        model
+            .userModel
+            .deleteUser(uid)
+            .then(
+                function(status){
+                    res.send(200);
+                },
+                function(error){
+                    res.sendStatus(400).send(error);
+                }
+            );
+
+      /*  for(var u in users){
             if(users[u]._id === uid){
                 users.splice(u, 1);
             }
         }
-        res.send(200);
+        res.send(200);*/
     }
 
     function createUser(req, res){
@@ -93,12 +105,29 @@ module.exports = function(app, model) {
        }
       function findUserByUsername(req, res){
           var username = req.query.username;
-          for ( var u in users){
+          model
+              .userModel
+              .findUserByUsername(username)
+              .then(
+                  function(users){
+                      if(users)
+                      {
+                          res.json(users[0]);
+                      }
+                      else{
+                          res.send('0');
+                      }
+                  },
+                  function(error){
+                      res.sendStatus(400).send(error);
+                  }
+              );
+         /* for ( var u in users){
               if(users[u].username === username){
                   res.send(users[u]);
               }
           }
-          res.send('0');
+          res.send('0');*/
       }
       function findUserByCredentials(req, res){
           var username = req.query.username;
@@ -107,8 +136,18 @@ module.exports = function(app, model) {
               .userModel
               .findUserByCredentials(username, psd)
               .then(
-                  function(user){
-                      res.send()
+                  function(users){
+                      if(users)
+                      {
+                          res.json(users[0]);
+                      }
+                      else{
+                          res.send('0');
+                      }
+
+                  },
+                  function(error){
+                      res.sendStatus(400).send(error);
                   }
               );
          /* for(var u in users){
