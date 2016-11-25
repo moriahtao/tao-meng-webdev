@@ -2,6 +2,7 @@
 * model is going to encapsulate all the data access, interactions with the database
 * the interactions and data access is using the schema, all those insertions, updates should follow schema*/
 module.exports = function(){
+    var model = {};
     var mongoose = require("mongoose");
     var UserSchema = require("./user.schema.server.js")();/*the parenthesis at the last actually calls the function
     the require()only loads the function. var UserSchema actually reference to the schema(return UserSchema in
@@ -11,12 +12,25 @@ module.exports = function(){
     var api={
         createUser: createUser,
         findUserById: findUserById,
+        findAllWebsitesForUser: findAllWebsitesForUser,
         updateUser: updateUser,
         findUserByCredentials: findUserByCredentials,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        setModel: setModel
     };
     return api;
 
+    function setModel(_model){
+        model =  _model;
+    }//passs the model to every model so that everybody has the excess to every model
+
+    function findAllWebsitesForUser(uid){
+        return UserModel
+            .findById(uid)
+            .populate("websites")
+            .exec();
+
+    }
     function findUserById(userId){
         //UserModel.find({_id: userId});--> returns an array
         return UserModel.findById(userId);//--> returns an object

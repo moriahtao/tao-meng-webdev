@@ -21,8 +21,8 @@
         init();
 
         function createWebsite(website){
-            website._id = (new Date()).getTime() + "";
-            website.developerId = vm.userId;
+           // website._id = (new Date()).getTime() + "";
+            //website.developerId = vm.userId;
             var promise =  WebsiteService.createWebsite(vm.userId, website);
             promise
                 .success(function () {

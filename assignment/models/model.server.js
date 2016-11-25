@@ -3,11 +3,15 @@ module.exports= function(){
     mongoose.connect('mongodb://localhost/test');
 
     var userModel = require("./user/user.model.server.js")();
-    //var websiteModel = require("./website/website.model.server.js")();
+    var websiteModel = require("./website/website.model.server.js")();
 
     var model = {
         userModel: userModel,
-        //websiteModel: websiteModel
+        websiteModel: websiteModel
     };
+
+    websiteModel.setModel(model);
+    userModel.setModel(model);
+
     return model;
 };
