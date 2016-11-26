@@ -10,8 +10,8 @@
         vm.newPage = newPage;
 
         function newPage(page){
-            page._id = (new Date()).getTime() + "";
-            page.websiteId = vm.websiteId;
+           // page.dateCreated = new Date().getTime();
+            //page.websiteId = vm.websiteId;
             var promise =  PageService.createPage(vm.websiteId, page);
             promise
                 .success(function () {

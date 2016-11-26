@@ -1,0 +1,25 @@
+
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder=""/>
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input ng-model="model.widget.text"class="form-control"id="text"/>
+        </div>
+        <div class="form-group">
+            <label for="row">Rows</label>
+            <input ng-model="model.widget.rows"class="form-control"id="row"type="number"/>
+        </div>
+        <div class="form-group">
+            <label for="formatted">Formatted</label>
+            <input ng-model="model.widget.formatted"type="checkbox" class="form-control"id="formatted">
+        </div>
+    </form>
+    <a class="btn btn-danger  btn-block"
+       ng-click="model.deleteWidget()">Delete</a>
+</div>
+
+

@@ -10,12 +10,19 @@ module.exports = function () {
         findWebsiteById: findWebsiteById,
         updateWebsite: updateWebsite,
         deleteWebsite: deleteWebsite,
+        findAllPagesForWebsite: findAllPagesForWebsite,
         setModel: setModel
     };
     return api;
 
     function setModel(_model){
         model =  _model;
+    }
+    function findAllPagesForWebsite(websiteId) {
+        return WebsiteModel
+            .findById(websiteId)
+            .populate("pages")
+            .exec();// return websiteObj
     }
 
     function findAllWebsitesForUser(uid) {
@@ -33,9 +40,10 @@ module.exports = function () {
                     .then(function(userObj) {
                         userObj.websites.push(websiteObj);
                         websiteObj._user = userObj._id;
-                        websiteObj.save();
-                        return userObj.save();//in the previous all the operations only exists in the RAM,
+                            userObj.save();
+                            return websiteObj.save();//in the previous all the operations only exists in the RAM,
                         // here we need to put it actually into the database
+                       // return websiteObj;
                     },
                     function (error) {
                         console.log(error);

@@ -16,8 +16,8 @@
         function init(){
             var promise = WidgetService.findWidgetsByPageId(vm.pageId);
             promise
-                .success(function (widgets) {
-                    vm.widgets = widgets;
+                .success(function (page) {
+                    vm.widgets = page.widgets;
                 })
                 .error(function (error){
 
