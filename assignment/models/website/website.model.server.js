@@ -70,11 +70,31 @@ module.exports = function () {
     }
     function deleteWebsite(websiteId) {
         return WebsiteModel
+                .findById(websiteId)
+                .then(function (websiteObj) {
+
+                    model.userModel.findUserById(websiteObj._user)
+                        .then(function (userObj) {
+
+                            userObj.websites.splice(websiteId,1);
+
+                            return userObj.save();
+
+                        });
+                    return WebsiteModel.remove({
+                        _id:websiteId
+                    });
+
+
+                });
+
+
+        /*return WebsiteModel
             .remove(
                 {
                     _id: websiteId
                 }
-            );
+            );*/
     }
 
 

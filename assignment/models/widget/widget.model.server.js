@@ -11,7 +11,8 @@ module.exports = function () {
         updateWidget: updateWidget,
         uploadImage: uploadImage,
         findWidgetById: findWidgetById,
-        deleteWidget: deleteWidget
+        deleteWidget: deleteWidget,
+        sort: sort
     };
     return api;
 
@@ -33,7 +34,8 @@ module.exports = function () {
                     .then(function (pageObj) {
                         pageObj.widgets.push(widgetObj);
                         pageObj.save();
-                        return widgetObj;
+                        widgetObj._page = pageObj._id;
+                        return widgetObj.save();
                     });
             });
     }
@@ -41,6 +43,19 @@ module.exports = function () {
     function findWidgetById(wid) {
         return WidgetModel
             .findById(wid);
+    }
+
+    function sort(start, end, pageId) {
+        console.log([start, end]);
+        return model
+            .pageModel
+            .findPageById(pageId)
+            .then(function (pageObj) {
+                console.log(pageObj.widgets);
+                pageObj.widgets.splice(end, 0, pageObj.widgets.splice(start, 1)[0]);
+                console.log(pageObj.widgets);
+                return pageObj.save();
+            });
     }
 
     function uploadImage(widgetId, req) {
@@ -125,9 +140,24 @@ module.exports = function () {
         }
     }
     function deleteWidget(widgetId) {
-        return WidgetModel
+       return WidgetModel
+            .findById(widgetId)
+            .then(function (widgetObj) {
+               model
+                   .pageModel
+                   .findPageById(widgetObj._page)
+                   .then(function (pageObj) {
+                       pageObj.widgets.splice(widgetId, 1);
+                       return pageObj.save();
+                   });
+                return WidgetModel
+                    .remove({
+                        _id: widgetId
+                    });
+            });
+       /*return WidgetModel
             .remove({
                 _id: widgetId
-            });
+            });*/
     }
 };

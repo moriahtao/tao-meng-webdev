@@ -60,6 +60,22 @@ module.exports = function () {
         )
     }
     function deletePage(pid) {
+        return PageModel
+            .findById(pid)
+            .then(function(pageObj)
+            {
+                model
+                    .websiteModel
+                    .findWebsiteById(pageObj._website)
+                    .then(function (websiteObj) {
+                        websiteObj.pages.splice(pid, 1);
+                        return websiteObj.save();
+                    });
+                return PageModel
+                    .remove({
+                        _id: pid
+                    });
+            });
        /* model
             .websiteModel
             .update({
@@ -68,9 +84,6 @@ module.exports = function () {
                 {
                     multi: true
                 });*/
-        return PageModel
-            .remove({
-            _id: pid
-        });
+     /*   */
     }
 };

@@ -28,8 +28,20 @@ module.exports = function (app, model) {
     function sort(req, res){
         var start = req.query.start;
         var end = req.query.end;
+        var pageId = req.params.pid;
+        model
+            .widgetModel
+            .sort(start, end, pageId)
+            .then(function (status) {
+                res.send(200);
+            },
+            function (err) {
+                res.sendStatus(400).send(err);
+            });
+        /*var start = req.query.start;
+        var end = req.query.end;
         console.log([start, end]);
-        widgets.splice(end, 0, widgets.splice(start, 1)[0]);
+        widgets.splice(end, 0, widgets.splice(start, 1)[0]);*/
     }
 
 
