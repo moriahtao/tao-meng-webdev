@@ -11,8 +11,8 @@
         function init(){
             var promise = WebsiteService.findAllWebsitesForUser(vm.userId);
             promise
-                .success(function (websites) {
-                    vm.websites = websites;
+                .success(function (user) {
+                    vm.websites = user.websites;
                 })
                 .error(function (error){
 

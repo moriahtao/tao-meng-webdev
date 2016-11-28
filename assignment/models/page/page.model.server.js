@@ -68,7 +68,8 @@ module.exports = function () {
                     .websiteModel
                     .findWebsiteById(pageObj._website)
                     .then(function (websiteObj) {
-                        websiteObj.pages.splice(pid, 1);
+                        var pIndex = websiteObj.pages.indexOf(pid);
+                        websiteObj.pages.splice(pIndex, 1);
                         return websiteObj.save();
                     });
                 return PageModel

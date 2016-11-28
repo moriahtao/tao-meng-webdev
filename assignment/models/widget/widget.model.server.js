@@ -147,7 +147,8 @@ module.exports = function () {
                    .pageModel
                    .findPageById(widgetObj._page)
                    .then(function (pageObj) {
-                       pageObj.widgets.splice(widgetId, 1);
+                       var wIndex = pageObj.widgets.indexOf(widgetId);
+                       pageObj.widgets.splice(wIndex, 1);
                        return pageObj.save();
                    });
                 return WidgetModel

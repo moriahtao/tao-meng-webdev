@@ -75,10 +75,11 @@ module.exports = function () {
 
                     model.userModel.findUserById(websiteObj._user)
                         .then(function (userObj) {
-
-                            userObj.websites.splice(websiteId,1);
-
+                            var wIndex = userObj.websites.indexOf(websiteId);
+                            userObj.websites.splice(wIndex,1);
                             return userObj.save();
+
+                           // return userObj.save();
 
                         });
                     return WebsiteModel.remove({
