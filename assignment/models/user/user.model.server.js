@@ -11,15 +11,31 @@ module.exports = function(){
     in terms of UserSchema, to delete, update, create user*/
     var api={
         createUser: createUser,
+        findUserByGoogleId: findUserByGoogleId,
+        findUserByFacebookId: findUserByFacebookId,
         findUserById: findUserById,
         findAllWebsitesForUser: findAllWebsitesForUser,
         updateUser: updateUser,
+        findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         deleteUser: deleteUser,
         setModel: setModel
     };
     return api;
 
+    function findUserByGoogleId(googleId) {
+        return UserModel
+            .findOne({
+                "google.id": googleId
+            });
+        
+    }
+    function findUserByFacebookId(facebookId) {
+        return UserModel
+            .findOne({
+                "facebook.id": facebookId
+            });
+    }
     function setModel(_model){
         model =  _model;
     }//passs the model to every model so that everybody has the excess to every model
@@ -50,8 +66,14 @@ module.exports = function(){
                 }
             );
     }
+    function findUserByUsername(name){
+        return UserModel.findOne({//also if sure there is only one result, can write as findOne({})
+            username: name
+        });
+
+    }
     function findUserByCredentials(name, psd){
-        return UserModel.find({//also if sure there is only one result, can write as findOne({})
+        return UserModel.findOne({//also if sure there is only one result, can write as findOne({})
             username: name,
             password: psd
         });

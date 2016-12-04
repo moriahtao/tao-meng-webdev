@@ -42,6 +42,7 @@
         }
 
         function updateWidget(widget) {
+
             var promise =  WidgetService.updateWidget(vm.widgetId, widget);
             promise
                 .success(function () {

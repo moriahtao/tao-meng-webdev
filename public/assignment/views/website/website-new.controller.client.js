@@ -23,6 +23,11 @@
         function createWebsite(website){
            // website._id = (new Date()).getTime() + "";
             //website.developerId = vm.userId;
+            if(vm.myForm.$invalid == true){
+                vm.error = "Please enter a valid name";
+                vm.alert = "* Required Field";
+
+            }else{
             var promise =  WebsiteService.createWebsite(vm.userId, website);
             promise
                 .success(function () {
@@ -31,6 +36,7 @@
                 .error(function (error){
 
                 });
+            }
             /*var success = WebsiteService.createWebsite(vm.userId, website);
             if(success){
                 $location.url("/user/" + vm.userId+"/website");

@@ -1,0 +1,126 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button"
+                    class="navbar-toggle"
+                    data-toggle="collapse"
+                    ng-init="isCollapsed = true"
+                    ng-click="isCollapsed = !isCollapsed">
+                <!--data-target="#bs-example-navbar-collapse-1">-->
+                <span class="sr-only">Toggle navigation</span>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <a class="navbar-brand" href="#/search"><span class="fa fa-home"></span></a>
+            <a class="navbar-brand">My Profile</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+
+        <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="page-scroll">
+                    <a ng-click="model.logout()"><span class="fa fa-sign-out"></span>Logout</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#/searchresults/cupcakes"><span class="fa fa-search"></span>Search</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!--Header End-->
+<!--Header End-->
+
+<!--{{model.user}}-->
+
+
+<div class="container top">
+    <div ng-show="model.success"
+         class="alert alert-info">
+        {{model.success}}
+    </div>
+
+
+    <!--<div ng-show="model.success"-->
+    <!--class="alert alert-success">{{model.success}}</div>-->
+
+    <!--<div ng-show="model.error"-->
+    <!--class="alert alert-danger">{{model.error}}</div>-->
+    <h3>Profile</h3>
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="alice"
+                   readonly
+                   ng-model="model.user.username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   ng-model="model.user.email"
+                   placeholder="alice.w@example.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="first-name"
+                   ng-model="model.user.firstName"
+                   placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="last-name"
+                   ng-model="model.user.lastName"
+                   placeholder="Wonderland">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text"
+                   class="form-control"
+                   id="phone"
+                   ng-model="model.user.phone"
+                   placeholder="+1 (000) 000 0000">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea type="text"
+                      class="form-control"
+                      id="address"
+                      rows="2"
+                      ng-model="model.user.address"
+                      placeholder=""></textarea>
+        </div>
+    </form>
+    <a class="btn btn-primary btn-block"
+       ng-click="model.updateUser(model.user)">Save Changes</a>
+    <a class="btn btn-danger btn-block"
+      href="#/home">
+      Logout</a>
+</div>
+
+
+<!--Footer-->
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-footer">
+            <p class="navbar-text pull-right">
+                <a class="navbar-brand" href="#/search">MovieTalks!</a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<!--Footer End-->

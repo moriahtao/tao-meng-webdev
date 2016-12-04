@@ -34,6 +34,11 @@
 
 
         function editPage(page){
+            if(vm.myForm.$invalid == true){
+                vm.error = "Please enter a valid page name";
+                vm.alert = "* Required Field";
+
+            }else{
             var promise = PageService.updatePage(vm.pageId, vm.page);
             promise
                 .success(function(){
@@ -41,7 +46,7 @@
                 })
                 .error(function(){
 
-                });
+                });}
         }
 
         function deletePage(pid){

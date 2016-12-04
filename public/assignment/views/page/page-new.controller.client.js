@@ -12,6 +12,11 @@
         function newPage(page){
            // page.dateCreated = new Date().getTime();
             //page.websiteId = vm.websiteId;
+            if(vm.myForm.$invalid == true){
+                vm.error = "Please enter a valid page name";
+                vm.alert = "* Required Field";
+
+            }else{
             var promise =  PageService.createPage(vm.websiteId, page);
             promise
                 .success(function () {
@@ -21,7 +26,7 @@
 
                 });
 
-        }
+        }}
 
 
     }
