@@ -95,7 +95,7 @@ module.exports = function(app, model) {
     function loggedInAndSelf(req,res,next) {
         var loggedin = req.isAuthenticated();
         var UserId = req.params.uid;
-        var self = UserId == req.user._id;
+        var self = UserId == req.user._idF;
         if(self && loggedin){
             next();
         }else{

@@ -1,45 +1,46 @@
-
-    <div class="container">
-        <div ng-show="model.error"
-             class="alert alert-danger"role="alert">{{model.error}}</div>
-        <h1>Register</h1>
-        <form novalidate name="model.myForm">
+<div class="container">
+    <div ng-show="model.error"
+         class="alert alert-danger" role="alert">{{model.error}}
+    </div>
+    <h1>Register</h1>
+    <form novalidate name="model.myForm">
         <span ng-show="model.myForm.username.$invalid">
             <h6>{{model.alert}}</h6>
         </span>
-            <input ng-model="model.user.username"
-                   name="username"
-                   type="text"
-                   class="form-control"
-                   placeholder="Username"
-                   required/>
-            <span ng-show="model.myForm.password.$invalid">
+        <input ng-model="model.user.username"
+               name="username"
+               type="text"
+               class="form-control"
+               placeholder="Username"
+               required/>
+        <span ng-show="model.myForm.password.$invalid">
             <h6>{{model.alert}}</h6>
         </span>
-            <input ng-model="model.user.password"
-                   type="password"
-                   name="password"
-                   class="form-control"
-                   placeholder="Password"
-                   required/>
-            <span ng-show="model.myForm.verpass.$invalid">
+        <input ng-model="model.user.password"
+               type="password"
+               name="password"
+               class="form-control"
+               placeholder="Password"
+               required/>
+        <span ng-show="model.myForm.verpass.$invalid">
             <h6>{{model.alert}}</h6>
         </span>
-            <input ng-model="model.user.verpass"
-                   name="verpass"
-                   type="password"
-                   class="form-control"
-                   placeholder="Verify Password"
-                   required/>
-            <span ng-show="model.myForm.password.$viewValue != model.myForm.verpass.$viewValue">
+        <input ng-model="model.user.verpass"
+               name="verpass"
+               type="password"
+               class="form-control"
+               placeholder="Verify Password"
+               required/>
+        <span ng-show="model.myForm.password.$viewValue != model.myForm.verpass.$viewValue">
             <h6>{{model.vpsdAlert}}</h6>
         </span>
-            <button type="submit"
-                    class="btn btn-primary btn-block"
-                    ng-click="model.register(model.user)">
-                Register</button>
-        </form>
-        <p></p>
-        <a class="btn btn-danger  btn-block"
-           href="#/login">Cancel</a>
-    </div>
+        <button type="submit"
+                class="btn btn-primary btn-block"
+                ng-click="model.register(model.user)">
+            Register
+        </button>
+    </form>
+    <p></p>
+    <a class="btn btn-danger  btn-block"
+       href="#/login">Cancel</a>
+</div>

@@ -1,13 +1,20 @@
 
 <div class="container">
-    <form>
+
+    <form novalidate name="model.myForm">
+        <span ng-show="model.myForm.name.$invalid">
+            <h6>{{model.alert}}</h6>
+        </span>
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="">
+            <input ng-model="model.widget.name" type="text" name="name" class="form-control" id="name" placeholder="" required>
         </div>
+        <span ng-show="model.myForm.text.$invalid">
+                <h6>{{model.alert}}</h6>
+        </span>
         <div class="form-group">
             <label for="text">Text</label>
-            <input ng-model="model.widget.text"class="form-control"id="text" value="Millennials Will Live in Cities Unlike Anything We've Ever Seen Before">
+            <input ng-model="model.widget.text" name="text" class="form-control"id="text" required>
         </div>
         <div class="form-group">
             <label for="size">Size</label>
@@ -17,5 +24,4 @@
     <a class="btn btn-danger  btn-block"
        ng-click="model.deleteWidget()">Delete</a>
 </div>
-
 

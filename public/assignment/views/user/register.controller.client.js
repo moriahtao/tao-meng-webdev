@@ -12,7 +12,7 @@
                 vm.error = "Please check and resubmit!";
                 vm.alert = "* Required Field";
                 vm.vpsdAlert = "Passwords don't match!";
-            } else if(newUser.password !== newUser.verpass){
+            } else if(user.password !== user.verpass){
                 vm.error = "Please check and resubmit!";
                 vm.alert = "* Required Field";
                 vm.vpsdAlert = "Passwords don't match!";

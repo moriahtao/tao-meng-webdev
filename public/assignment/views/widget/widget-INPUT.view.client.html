@@ -1,9 +1,12 @@
 
 <div class="container">
-    <form>
+    <form novalidate name="model.myForm">
         <div class="form-group">
+             <span ng-show="model.myForm.username.$invalid">
+            <h6>{{model.alert}}</h6>
+            </span>
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder=""/>
+            <input ng-model="model.widget.name" type="text" name="name" class="form-control" id="name" placeholder="" required/>
         </div>
         <div class="form-group">
             <label for="text">Text</label>

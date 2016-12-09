@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("WidgetEditController", WidgetEditController);
 
-    function WidgetEditController($routeParams, WidgetService, $location) {
+    function WidgetEditController($routeParams, WidgetService, $location, $scope) {
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
@@ -13,7 +13,9 @@
         vm.deleteWidget = deleteWidget;
 
 
+
         function init() {
+            //vm.myFormHolder = {};
             var promise = WidgetService.findWidgetById(vm.widgetId);
             promise
                 .success(function (widget) {
@@ -43,6 +45,10 @@
 
         function updateWidget(widget) {
 
+            if(vm.myForm.$invalid == true){
+                vm.error = "Please check and resubmit!";
+                vm.alert = "* Required Field";
+            }else{
             var promise =  WidgetService.updateWidget(vm.widgetId, widget);
             promise
                 .success(function () {
@@ -54,6 +60,7 @@
 
            // WidgetService.updateWidget(vm.widgetId, widget);
             //$location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+        }
         }
     }
 })();

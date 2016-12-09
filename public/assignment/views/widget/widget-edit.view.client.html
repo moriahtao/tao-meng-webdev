@@ -1,9 +1,9 @@
-
 <nav class="navbar navbar-default navbar-fixed-top page-container">
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
+                   class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -21,17 +21,14 @@
 
     </div>
 </nav>
-
-
 <div class="container">
-  
-    <form>
-        <div ng-if='model.widget'>
-        <div ng-include="'views/widget/widget-'+model.widget.type+'.view.client.html'">
+        <div ng-show="model.error"
+             class="alert alert-danger" role="alert">{{model.error}}
         </div>
-          </div>
-
-    </form>
+        <div ng-if='model.widget'>
+            <div ng-include="'views/widget/widget-'+model.widget.type+'.view.client.html'">
+            </div>
+        </div>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom page-container-user">
@@ -44,3 +41,4 @@
     </div>
 
 </nav>
+
