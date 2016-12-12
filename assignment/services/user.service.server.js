@@ -42,7 +42,7 @@ module.exports = function(app, model) {
     app.get('/api/user', findUser);
     app.get('/api/user/:uid', findUserById);
     app.put('/api/user/:uid', loggedInAndSelf, updateUser);
-    app.delete('/api/user/:uid',loggedInAndSelf, deleteUser);
+    app.delete('/api/user/:uid', deleteUser);
     app.post('/api/logout', logout);
     app.get('/auth/google/callback',
         passport.authenticate('google', {
@@ -58,14 +58,14 @@ module.exports = function(app, model) {
 
 
     var googleConfig = {
-        clientID     : process.env.GOOGLE_CLIENT_ID,
-        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+        clientID     : "558988847579-9ehg50lkohmklqi2742g22ggcu6aee8v.apps.googleusercontent.com",
+        clientSecret : "JMR5JVsG-58HWD7ySGa81vFK",
+        callbackURL  : 'http://127.0.0.1:3000/auth/google/callback'
     };
     var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+        clientID     : "225840347842058",
+        clientSecret : "f54e98ec25a5677fdf93053ab9075027",
+        callbackURL  : 'http://localhost:3000/auth/facebook/callback'
     };
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
@@ -95,7 +95,7 @@ module.exports = function(app, model) {
     function loggedInAndSelf(req,res,next) {
         var loggedin = req.isAuthenticated();
         var UserId = req.params.uid;
-        var self = UserId == req.user._idF;
+        var self = UserId == req.user._id;
         if(self && loggedin){
             next();
         }else{

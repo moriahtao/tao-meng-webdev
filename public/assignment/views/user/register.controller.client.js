@@ -25,7 +25,7 @@
                         $location.url("/user/" + newUser._id);
                     })
                     .error(function (error) {
-                        vm.error="Oops! Username already exists!"
+                        vm.error="Oops! Something went wrong!"
                     });
             }
             /* if(user.password!=user.vpassword){
