@@ -65,7 +65,7 @@ module.exports = function(app, model) {
     var facebookConfig = {
         clientID     : "225840347842058",
         clientSecret : "f54e98ec25a5677fdf93053ab9075027",
-        callbackURL  : '52.26.190.20:3000/auth/facebook/callback'//'http://localhost:3000/auth/facebook/callback'
+        callbackURL  : 'http://52.26.190.20:3000/auth/facebook/callback'//'http://localhost:3000/auth/facebook/callback'
     };
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
